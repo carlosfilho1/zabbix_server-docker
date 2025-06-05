@@ -1,14 +1,14 @@
-## Sumário
-* [1. Visão Geral](#Visão Geral)
-* [2. Pré-requisitos]
-* [3. Arquivos de Configuração]
-* [4. Arquivo .env (Para Segredos)]
-* [5. Arquivo docker-compose.yml]
-* [6. Imagens Docker Utilizadas]
-* [7. Passo a Passo da Instalação]
-* [8. Acesso Inicial e Próximos Passos]
-* [9. Gerenciamento do Ambiente]
-* [10. Backup e Migração]
+# Sumário
+[1. Visão Geral](##Visão Geral)
+[2. Pré-requisitos]
+[3. Arquivos de Configuração]
+[4. Arquivo .env (Para Segredos)]
+[5. Arquivo docker-compose.yml]
+[6. Imagens Docker Utilizadas]
+[7. Passo a Passo da Instalação]
+[8. Acesso Inicial e Próximos Passos]
+[9. Gerenciamento do Ambiente]
+[10. Backup e Migração]
 
 1. Visão Geral
 Este guia utiliza Docker Compose para orquestrar os contêineres necessários para uma instalação completa do Zabbix, incluindo:
