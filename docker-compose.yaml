@@ -1,0 +1,102 @@
+services:
+# Zabbix Server with MySQL backend
+  zabbix-server:
+    image: zabbix/zabbix-server-mysql:ubuntu-7.2.7
+    container_name: zabbix-server-mysql
+    restart: unless-stopped
+    ports:
+      - "10051:10051"
+    volumes:
+      - zabbix_server_data_mysql:/var/lib/zabbix
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - DB_SERVER_HOST=mysql-server
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=zabbix
+      - ZBX_STARTUPDATABASESECONDS=300
+    depends_on:
+      mysql-server:
+        condition: service_healthy
+    networks:
+      - zabbix_net_mysql
+
+# Interface for Zabbix Web UI
+  zabbix-web:
+    image: zabbix/zabbix-web-nginx-mysql:7.2.7-ubuntu
+    container_name: zabbix-web-mysql
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - ZBX_SERVER_HOST=zabbix-server
+      - DB_SERVER_HOST=mysql-server
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=zabbix
+      - PHP_TZ=America/Sao_Paulo
+    depends_on:
+      - zabbix-server
+    networks:
+      - zabbix_net_mysql
+
+# MySQL server for Zabbix
+  mysql-server:
+    image: mysql:8.0
+    container_name: mysql-server-zabbix
+    restart: unless-stopped
+    command:
+      - mysqld
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_bin
+      - --log-bin-trust-function-creators=1
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=zabbix
+    healthcheck:
+      test: ["CMD-SHELL", "mysql -h 127.0.0.1 -u$$MYSQL_USER -p$$MYSQL_PASSWORD -D$$MYSQL_DATABASE -e 'SELECT 1' || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+    networks:
+      - zabbix_net_mysql
+
+# Zabbix Agent for monitoring the MySQL server
+  zabbix-agent:
+    image: zabbix/zabbix-agent:ubuntu-7.0.10
+    container_name: zabbix-agent-mysql
+    restart: unless-stopped
+    ports:
+      - "10050:10050"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /dev:/host/dev:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - ZBX_HOSTNAME=Docker Host # Nome do host na UI do Zabbix
+      - ZBX_SERVER_HOST=zabbix-server
+    privileged: true
+    pid: "host"
+    depends_on:
+      - zabbix-server
+    networks:
+      - zabbix_net_mysql
+
+networks:
+  zabbix_net_mysql:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  zabbix_server_data_mysql:
