@@ -5,7 +5,7 @@
 - [1. Visão Geral](#1-visão-geral)
 - [2. Pré-requisitos](#2-pré-requisito)
 - [3. Arquivos de Configuração](#3-arquivos-de-configuração)
-  - [3.1 Arquivo .env](#3.1-Arquivo-.env(Para-Segredos))
+  - [3.1 Arquivo .env](#31-arquivo-env-para-segredos)
 - [4. Arquivo .env para segredos](#4-Arquivo-.env-para-segredos)
 - [5. Arquivo docker compose.yml](#5-arquivo-docker-compose)
 - [6. Imagens Docker Utilizadas](#6-imagem-docker)
@@ -17,14 +17,14 @@
 ## 1. Visão Geral
 Este guia utiliza Docker Compose para orquestrar os contêineres necessários para uma instalação completa do Zabbix, incluindo:
 
-Zabbix Server: O backend principal que coleta e processa os dados.
-Zabbix Web: A interface frontend para visualização e configuração.
-MySQL Server: O banco de dados para armazenar todos os dados do Zabbix.
-Zabbix Agent: Um agente para monitorar a própria máquina host Docker.
+<b>Zabbix Server:</b> O backend principal que coleta e processa os dados.<br>
+<b>Zabbix Web:</b> A interface frontend para visualização e configuração.<br>
+<b>MySQL Server:</b> O banco de dados para armazenar todos os dados do Zabbix.<br>
+<b>Zabbix Agent:</b> Um agente para monitorar a própria máquina host Docker.<br>
 
 ## 2. Pré-requisitos
 Docker e Docker Compose devidamente instalados na máquina host.
-Recursos de sistema recomendados: Mínimo de 2 CPUs e 4 GB de RAM para um bom desempenho.
+Recursos de sistema recomendados: <b>Mínimo de 2 CPUs</b> e <b>4 GB de RAM</b> para um bom desempenho.
 
 ## 3. Arquivos de Configuração
 ### 3.1. Arquivo .env (Para Segredos)
@@ -45,7 +45,7 @@ MYSQL_ROOT_PASSWORD=SuaSenhaSuperForteParaRoot
 3.2. Arquivo docker-compose.yml
 Este é o arquivo principal que define todos os serviços. Ele já está configurado para ler as senhas do arquivo .env.
 
-Arquivo: docker-compose.yml
+<i>Arquivo: docker-compose.yml</i>
 
 YAML
 
@@ -149,6 +149,8 @@ networks:
 volumes:
   mysql_data:
   zabbix_server_data_mysql:
+
+  
 4. Imagens Docker Utilizadas
 [!NOTE]
 Para garantir a estabilidade, é recomendado fixar as versões das imagens em ambientes de produção (ex: mysql:8.0.33 em vez de mysql:8.0). As versões abaixo são as mais recentes na data de criação deste documento.
