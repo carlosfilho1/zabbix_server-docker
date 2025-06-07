@@ -2,20 +2,18 @@
 ![Zabbix](/icons/zabbix-badge.svg)
 
 # Sumário
-<sumary>
-<li><a href="#visao-geral">1. Visão Geral</a></li>
-<li><a href="#pre-requisito">2. Pré-requisitos</a></li>
-<li><a href="#arquivos-de-configuracao">3. Arquivos de Configuração</a></li>
-<li><a href="#arquivo-env">4. Arquivo .env (Para Segredos)</a></li>
-<li><a href="#arquivo-docker-compose">5. Arquivo docker-compose.yml</a></li>
-<li><a href="#imagem-docker">6. Imagens Docker Utilizadas</a></li>
-<li><a href="#passo-instalacao">7. Passo a Passo da Instalação</a></li>
-<li><a href="#acesso-inicial">8. Acesso Inicial e Próximos Passos</a></li>
-<li><a href="#gerenciamento-ambiente">9. Gerenciamento do Ambiente</a></li>
-<li><a href="#backup-migracao">10. Backup e Migração</a></li>
-</sumary>
+- [1. Visão Geral](#visao-geral)
+- [2. Pré-requisitos](#pre-requisito)
+- [3. Arquivos de Configuração](#arquivos-de-configuracao)
+- [4. Arquivo .env (Para Segredos)](#arquivo-env)
+- [5. Arquivo docker-compose.yml](#arquivo-docker-compose)
+- [6. Imagens Docker Utilizadas](#imagem-docker)
+- [7. Passo a Passo da Instalação](#passo-instalacao)
+- [8. Acesso Inicial e Próximos Passos](#acesso-inicial)
+- [9. Gerenciamento do Ambiente](#gerenciamento-ambiente)
+- [10. Backup e Migração](#backup-migracao) 
 
-## <a href="#visao-geral">1. Visão Geral</a>
+## 1. Visão Geral
 Este guia utiliza Docker Compose para orquestrar os contêineres necessários para uma instalação completa do Zabbix, incluindo:
 
 Zabbix Server: O backend principal que coleta e processa os dados.
@@ -23,11 +21,11 @@ Zabbix Web: A interface frontend para visualização e configuração.
 MySQL Server: O banco de dados para armazenar todos os dados do Zabbix.
 Zabbix Agent: Um agente para monitorar a própria máquina host Docker.
 
-## <a href="#pre-requisito">2. Pré-requisitos</a>
+## 2. Pré-requisitos
 Docker e Docker Compose devidamente instalados na máquina host.
 Recursos de sistema recomendados: Mínimo de 2 CPUs e 4 GB de RAM para um bom desempenho.
 
-## <a href="#arquivos-de-configuracao">3. Arquivos de Configuração</a>
+## 3. Arquivos de Configuração
 3.1. Arquivo .env (Para Segredos)
 Para evitar expor senhas diretamente no arquivo docker-compose.yml, é uma excelente prática usar um arquivo .env para armazená-las.
 
