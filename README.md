@@ -42,7 +42,7 @@ MYSQL_PASSWORD=${MYSQL_PASSWORD}
 > Variável incluido acima é com base no arquivo <i>.env</i>
 
 ### Senha para o usuário 'root' do banco de dados MySQL
-MYSQL_ROOT_PASSWORD=SuaSenhaSuperForteParaRoot
+MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
 > [!WARNING]<br>
 > Variável incluido acima é com base no arquivo <i>.env</i>
 
