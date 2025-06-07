@@ -2,9 +2,9 @@
 ![Zabbix](/icons/zabbix-badge.svg)
 
 # Sumário
-- [1. Visão Geral](#visao-geral)
-- [2. Pré-requisitos](#pre-requisito)
-- [3. Arquivos de Configuração](#arquivos-de-configuracao)
+- [1. Visão Geral](#1-visão-geral)
+- [2. Pré-requisitos](#2-pré-requisito)
+- [3. Arquivos de Configuração](#3-arquivos-de-configuracao)
 - [4. Arquivo .env (Para Segredos)](#arquivo-env)
 - [5. Arquivo docker-compose.yml](#arquivo-docker-compose)
 - [6. Imagens Docker Utilizadas](#imagem-docker)
