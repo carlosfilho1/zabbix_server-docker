@@ -1,8 +1,11 @@
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Zabbix](/icons/zabbix-badge.svg)
+
 # Sumário
 <sumary>
-<li><a href="#Visão Geral">1. Visão Geral</a></li>
-<li><a href="#Pre-requisito">2. Pré-requisitos</a></li>
-<li><a href="#Arquivos-de-Configuração">3. Arquivos de Configuração</a></li>
+<li><a href="#visao-geral">1. Visão Geral</a></li>
+<li><a href="#pre-requisito">2. Pré-requisitos</a></li>
+<li><a href="#arquivos-de-configuracao">3. Arquivos de Configuração</a></li>
 <li><a href="#arquivo-env">4. Arquivo .env (Para Segredos)</a></li>
 <li><a href="#arquivo-docker-compose">5. Arquivo docker-compose.yml</a></li>
 <li><a href="#imagem-docker">6. Imagens Docker Utilizadas</a></li>
@@ -12,17 +15,19 @@
 <li><a href="#backup-migracao">10. Backup e Migração</a></li>
 </sumary>
 
-1. Visão Geral
+## <a href="#visao-geral">1. Visão Geral</a>
 Este guia utiliza Docker Compose para orquestrar os contêineres necessários para uma instalação completa do Zabbix, incluindo:
 
 Zabbix Server: O backend principal que coleta e processa os dados.
 Zabbix Web: A interface frontend para visualização e configuração.
 MySQL Server: O banco de dados para armazenar todos os dados do Zabbix.
 Zabbix Agent: Um agente para monitorar a própria máquina host Docker.
-2. Pré-requisitos
+
+## <a href="#pre-requisito">2. Pré-requisitos</a>
 Docker e Docker Compose devidamente instalados na máquina host.
 Recursos de sistema recomendados: Mínimo de 2 CPUs e 4 GB de RAM para um bom desempenho.
-3. Arquivos de Configuração
+
+## <a href="#arquivos-de-configuracao">3. Arquivos de Configuração</a>
 3.1. Arquivo .env (Para Segredos)
 Para evitar expor senhas diretamente no arquivo docker-compose.yml, é uma excelente prática usar um arquivo .env para armazená-las.
 
